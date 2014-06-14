@@ -1,0 +1,23 @@
+for authentication and information of user:
+
+students -- name(varchar(50), password varchar(50), cpassword varchar(50), email varchar(50),squestion varchar(50), sanswer varchar(50)
+teacher --  name(varchar(50), password varchar(50), cpassword varchar(50), email varchar(50),squestion varchar(50), sanswer varchar(50)
+admin --   name(varchar(50), password varchar(50), cpassword varchar(50), email varchar(50),squestion varchar(50), sanswer varchar(50)
+
+
+subject and question answer(correct)
+
+gk         --      question varchar(200), optiona varchar(200), optionb varchar(200), optionc varchar(200), optiond varchar(200), correct int, qno int primary key identity)
+aptitude  --   question varchar(200), optiona varchar(200), optionb varchar(200), optionc varchar(200), optiond varchar(200), correct int, qno int primary key identity)
+c              --   question varchar(200), optiona varchar(200), optionb varchar(200), optionc varchar(200), optiond varchar(200), correct int, qno int primary key identity)
+maths       -- question varchar(200), optiona varchar(200), optionb varchar(200), optionc varchar(200), optiond varchar(200), correct int, qno int primary key identity)
+english      -- question varchar(200), optiona varchar(200), optionb varchar(200), optionc varchar(200), optiond varchar(200), correct int, qno int primary key identity)
+
+to storing temorary data
+
+temp1 --  subject varchar(200), question int, answer int
+
+
+storing permanent result
+
+result -- name varchar(200) primary key, subject varchar(200) primary key, score int

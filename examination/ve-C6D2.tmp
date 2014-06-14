@@ -1,0 +1,200 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="examination._Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+ #root {
+    background-color: #eee;
+}
+
+#left_side {
+    float: left;
+        height: 19px;
+        width: 80px;
+    }
+
+#center_s {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65px;
+    background-color: #ccc;
+}
+
+#right_side {
+    float: right;
+            margin-left: 0px;
+            height: 238px;
+            width: 237px;
+        }
+
+
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server" visible="True">
+    <p dir="rtl" 
+        
+        style="height: 70px; width: 814px; font-family: 'Times New Roman', Times, serif; font-size: x-large; font-weight: bold; font-style: italic; font-variant: normal; text-transform: capitalize; color: #808080;">
+&nbsp;&nbsp; Welcome To Examination Portal</p>
+<div id="root">
+    <div id="left_side">
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server" Font-Bold="True" 
+            Font-Italic="True" Font-Names="Times New Roman" Font-Overline="False" 
+            Font-Size="Large" Font-Strikeout="False" Font-Underline="True" 
+            ForeColor="Black" TextAlign="Left" Width="500px" Height="59px" 
+            RepeatDirection="Horizontal" style="margin-left: 85px" BorderStyle="Solid">
+            <asp:ListItem>Student</asp:ListItem>
+            <asp:ListItem>Teacher</asp:ListItem>
+            <asp:ListItem>Admin</asp:ListItem>
+        </asp:RadioButtonList>
+    </div>
+</div>
+
+    <br />
+    <br />
+    <br />
+    <asp:Login ID="Login1" runat="server" 
+        style="margin-left: 652px; margin-top: 0px" BackColor="#F7F6F3" 
+        BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="None" BorderWidth="1px" 
+        Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" Height="173px" 
+        Width="378px">
+        <TextBoxStyle Font-Size="0.8em" />
+        <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" 
+            BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
+        <LayoutTemplate>
+           
+                &nbsp;Log In<div ID="center_s">
+                </div>
+                <br />
+                           
+                                
+                                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">User Name:</asp:Label>
+                                
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 
+                <asp:TextBox ID="UserName" runat="server" AutoPostBack="True"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                        ControlToValidate="UserName" ErrorMessage="User Name is required." 
+                                        ToolTip="User Name is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                              
+                               
+                                    <br />
+                              
+                               
+                                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Password:</asp:Label>
+                               
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               
+                                    <asp:TextBox ID="Password" runat="server" TextMode="Password"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
+                                        ControlToValidate="Password" ErrorMessage="Password is required." 
+                                        ToolTip="Password is required." ValidationGroup="Login1">*</asp:RequiredFieldValidator>
+                              
+                               
+                                    <br />
+                              
+                               
+                                    <asp:CheckBox ID="RememberMe" runat="server" Text="Remember me next time." />
+                                
+                                    <br />
+                                
+                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                
+                                    <br />
+                <br />
+                                
+                                    <br />
+                                
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                
+                                    <asp:Button ID="LoginButton" runat="server" 
+                    CommandName="Login" Text="Log In" 
+                                        ValidationGroup="Login1" onclick="LoginButton_Click" 
+                    style="height: 26px" />
+                                
+        </LayoutTemplate>
+        <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+        <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" 
+            ForeColor="White" />
+    </asp:Login>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+                                    
+                                
+    <br />
+    <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div 
+        align="right"  
+        
+        style="height: 361px; width: 856px; margin-left: 78px; margin-top: 0px; margin-right: 0px;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+        Sign Up For New 
+        User&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="Username"></asp:Label>
+        :&nbsp;&nbsp; &nbsp;&nbsp;<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" 
+            ControlToValidate="TextBox1" ErrorMessage="*"></asp:RequiredFieldValidator>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <asp:Label ID="Label2" runat="server" Text="Password"></asp:Label>
+        :&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox2" runat="server" TextMode="Password"></asp:TextBox>
+&nbsp;
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" 
+            ControlToValidate="TextBox2" ErrorMessage="*"></asp:RequiredFieldValidator>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <asp:Label ID="Label3" runat="server" Text="Confirm Password"></asp:Label>
+        :&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox3" runat="server" TextMode="Password"></asp:TextBox>
+&nbsp;
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" 
+            ControlToValidate="TextBox3" ErrorMessage="*"></asp:RequiredFieldValidator>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <asp:Label ID="Label4" runat="server" Text="Email"></asp:Label>
+        :&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+&nbsp;
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" 
+            ControlToValidate="TextBox4" ErrorMessage="*"></asp:RequiredFieldValidator>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <asp:Label ID="Label5" runat="server" Text="Security Question"></asp:Label>
+        :&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+&nbsp;
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" 
+            ControlToValidate="TextBox5" ErrorMessage="*"></asp:RequiredFieldValidator>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <asp:Label ID="Label6" runat="server" Text="Security Answer"></asp:Label>
+        :&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+&nbsp;
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" 
+            ControlToValidate="TextBox6" ErrorMessage="*"></asp:RequiredFieldValidator>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <br />
+        <br />
+&nbsp;
+        <asp:Button ID="Button1" runat="server" Text="Sign Up!" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
+                                    
+                                
+        </div>
+    &nbsp;</form>
+    </body>
+</html>

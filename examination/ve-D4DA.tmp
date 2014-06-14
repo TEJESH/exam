@@ -1,0 +1,173 @@
+﻿Imports System.Data.SqlClient
+Partial Public Class WebForm3
+    Inherits System.Web.UI.Page
+    Dim conn As SqlConnection
+    Dim cmd, cmd1, cmd2, c1, c2 As SqlCommand
+    Dim dr, dr1, dr2 As SqlDataReader
+    Dim s, q, a, b, c, d, st As String
+    'Dim con As SqlConnection
+    'Dim da As SqlDataAdapter
+    'Dim dst As New DataSet
+    'Dim str As String
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+       
+
+
+
+        'con = New SqlConnection
+        'con.ConnectionString = "data source = Tejesh-PC; initial catalog = tej; integrated security=sspi"
+        'con.Open()
+        'da = New SqlDataAdapter("select * from aptitude", con)
+        'da.Fill(dst, "aptitude")
+        'da.SelectCommand = New SqlCommand("select * from gk", con)
+        ' da.Fill(dst, "gk")
+        ' da.SelectCommand = New SqlCommand("select * from c", con)
+        ' da.Fill(dst, "c")
+        'da.SelectCommand = New SqlCommand("select * from maths", con)
+        'da.Fill(dst, "maths")
+        'da.SelectCommand = New SqlCommand("select * from english", con)
+        'da.Fill(dst, "english")
+        'con.Close()
+
+        If RadioButtonList1.SelectedIndex = 0 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 1 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 2 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 3 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 4 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 5 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 6 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 7 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 8 Then
+
+        ElseIf RadioButtonList1.SelectedIndex = 9 Then
+
+        Else
+
+
+
+
+
+            Try
+                conn = New SqlConnection
+
+                conn.ConnectionString = "data source=tejesh-pc; initial catalog=tej;integrated security=sspi "
+                conn.Open()
+                cmd = New SqlCommand
+                cmd.Connection = conn
+                
+                s = Session("subject")
+
+                If s = "Gk" Then
+                    cmd1 = New SqlCommand
+                    cmd1.Connection = conn
+                    st = "Select * from Gk"
+                    cmd.CommandText = st
+                    dr1 = cmd.ExecuteReader()
+                    If dr1.Read Then
+                        q = dr1.GetString(0)
+                        a = dr1.GetString(1)
+                        b = dr1.GetString(2)
+                        c = dr1.GetString(3)
+                        d = dr1.GetString(4)
+
+                    End If
+                    dr1.Close()
+                ElseIf s.Equals("English") Then
+                    cmd1 = New SqlCommand
+                    cmd1.Connection = conn
+                    st = "Select * from Gk"
+                    cmd.CommandText = st
+                    dr1 = cmd.ExecuteReader()
+                    If dr1.Read Then
+                        q = dr1.GetString(0)
+                        a = dr1.GetString(1)
+                        b = dr1.GetString(2)
+                        c = dr1.GetString(3)
+                        d = dr1.GetString(4)
+
+                    End If
+                    dr1.Close()
+                ElseIf s.Equals("C") Then
+                    cmd1 = New SqlCommand
+                    cmd1.Connection = conn
+                    st = "Select * from Gk"
+                    cmd.CommandText = st
+                    dr1 = cmd.ExecuteReader()
+                    If dr1.Read Then
+                        q = dr1.GetString(0)
+                        a = dr1.GetString(1)
+                        b = dr1.GetString(2)
+                        c = dr1.GetString(3)
+                        d = dr1.GetString(4)
+
+                    End If
+                    dr1.Close()
+                ElseIf s.Equals("Aptitude") Then
+                    cmd1 = New SqlCommand
+                    cmd1.Connection = conn
+                    st = "Select * from Aptitude"
+                    cmd.CommandText = st
+                    dr1 = cmd.ExecuteReader()
+                    If dr1.Read Then
+                        q = dr1.GetString(0)
+                        a = dr1.GetString(1)
+                        b = dr1.GetString(2)
+                        c = dr1.GetString(3)
+                        d = dr1.GetString(4)
+
+                    End If
+                    dr1.Close()
+                ElseIf s.Equals("Maths") Then
+                    cmd1 = New SqlCommand
+                    cmd1.Connection = conn
+                    st = "Select * from Gk where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                    cmd.CommandText = st
+                    dr1 = cmd.ExecuteReader()
+                    If dr1.Read Then
+                        q = dr1.GetString(0)
+                        a = dr1.GetString(1)
+                        b = dr1.GetString(2)
+                        c = dr1.GetString(3)
+                        d = dr1.GetString(4)
+
+                    End If
+
+                End If
+                Label1.Text = q
+                RadioButton1.Text = a
+                RadioButton2.Text = b
+                RadioButton3.Text = c
+                RadioButton4.Text = d
+
+
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+
+
+
+
+        End If
+    End Sub
+
+    
+
+   
+
+    
+
+
+    Protected Sub RadioButtonList1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RadioButtonList1.SelectedIndexChanged
+
+    End Sub
+End Class

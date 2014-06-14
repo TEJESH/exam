@@ -1,0 +1,411 @@
+﻿
+Imports System.Data.SqlClient
+
+Partial Public Class WebForm3
+    Inherits System.Web.UI.Page
+    Dim conn As SqlConnection
+    Dim cmd, cmd1, cmd2, cmd5, c1, c2 As SqlCommand
+    Dim dr, dr1, dr2 As SqlDataReader
+    Dim s, q, a, b, c, d, st, str1 As String
+    Dim st_ans(10), crt_ans(10), x As String
+    'Dim con As SqlConnection
+    'Dim da As SqlDataAdapter
+    'Dim dst As New DataSet
+    'Dim str As String
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+        If Session("subject") = "" Then
+            Response.Redirect("default.aspx")
+
+
+        End If
+
+
+        'con = New SqlConnection
+        'con.ConnectionString = "data source = Tejesh-PC; initial catalog = tej; integrated security=sspi"
+        'con.Open()
+        'da = New SqlDataAdapter("select * from aptitude", con)
+        'da.Fill(dst, "aptitude")
+        'da.SelectCommand = New SqlCommand("select * from gk", con)
+        ' da.Fill(dst, "gk")
+        ' da.SelectCommand = New SqlCommand("select * from c", con)
+        ' da.Fill(dst, "c")
+        'da.SelectCommand = New SqlCommand("select * from maths", con)
+        'da.Fill(dst, "maths")
+        'da.SelectCommand = New SqlCommand("select * from english", con)
+        'da.Fill(dst, "english")
+        'con.Close()
+
+
+
+
+
+
+
+        Try
+            conn = New SqlConnection
+
+            conn.ConnectionString = "data source=tejesh-pc; initial catalog=tej;integrated security=sspi "
+            conn.Open()
+            cmd = New SqlCommand
+            cmd.Connection = conn
+
+            s = Session("subject")
+
+            If s = "Gk" Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from Gk where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("English") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from English where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("C") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from C where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("Aptitude") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from Aptitude where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("Maths") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from Maths where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+
+            End If
+            Label1.Text = q
+            Label8.Text = a
+            Label9.Text = b
+            Label10.Text = c
+            Label11.Text = d
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        cmd = New SqlCommand
+        cmd.Connection = conn
+
+        str1 = "update temp set subject='" & Session("subject") & "'"
+        cmd.CommandText = str1
+        cmd.ExecuteNonQuery()
+
+
+
+
+
+    End Sub
+
+
+
+
+
+
+
+
+    Protected Sub RadioButtonList1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RadioButtonList1.SelectedIndexChanged
+        Try
+            conn = New SqlConnection
+
+            conn.ConnectionString = "data source=tejesh-pc; initial catalog=tej;integrated security=sspi "
+            conn.Open()
+            cmd = New SqlCommand
+            cmd.Connection = conn
+
+            s = Session("subject")
+            Response.Write(s)
+            If s = "Gk" Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from Gk where qno=" & RadioButtonList1.SelectedIndex + 1
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+                Else
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("English") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from English where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("C") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from C where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("Aptitude") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from Aptitude where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            ElseIf s.Equals("Maths") Then
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                st = "Select * from Maths where qno=" & (RadioButtonList1.SelectedIndex + 1)
+                cmd.CommandText = st
+                dr1 = cmd.ExecuteReader()
+                If dr1.Read Then
+                    q = dr1.GetString(0)
+                    a = dr1.GetString(1)
+                    b = dr1.GetString(2)
+                    c = dr1.GetString(3)
+                    d = dr1.GetString(4)
+
+                End If
+                dr1.Close()
+            End If
+            Label1.Text = q
+            Label8.Text = a
+            Label9.Text = b
+            Label10.Text = c
+            Label11.Text = d
+
+
+
+        Catch ex As Exception
+            'Label7.Text = ex.Message
+            Response.Write("<font color='red'>" & ex.Message)
+        End Try
+        If RadioButton1.Checked Then
+            x = RadioButton1.Text
+        ElseIf RadioButton2.Checked Then
+            x = RadioButton2.Text
+        ElseIf RadioButton3.Checked Then
+            x = RadioButton3.Text
+        ElseIf RadioButton4.Checked Then
+            x = RadioButton4.Text
+        End If
+
+
+
+        cmd = New SqlCommand
+        cmd.Connection = conn
+
+        str1 = "update temp set answer='" & x & "' where question=" & RadioButtonList1.SelectedIndex + 1
+        cmd.CommandText = str1
+        cmd.ExecuteNonQuery()
+
+
+
+
+
+
+
+    End Sub
+
+
+    Protected Sub Button4_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button4.Click
+        Session.Abandon()
+        Response.Redirect("default.aspx")
+    End Sub
+
+    Protected Sub Button5_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button5.Click
+
+        Dim i, marks As Integer
+        i = 0
+        marks = 0
+        cmd = New SqlCommand
+        cmd.Connection = conn
+        cmd.CommandText = "select correct from " & Session("subject")
+        dr1 = cmd.ExecuteReader
+        While (dr1.Read())
+            crt_ans(i + 1) = dr1.GetString(i)
+            i += 1
+        End While
+        i = 0
+        dr1.Close()
+        cmd = New SqlCommand
+        cmd.Connection = conn
+        cmd.CommandText = "select answer from temp"
+        dr1 = cmd.ExecuteReader
+        While (dr1.Read())
+            st_ans(i + 1) = dr1.GetString(i)
+            i += 1
+        End While
+        dr1.Close()
+        For i = 1 To 10
+            If (st_ans(i) = crt_ans(i)) Then
+                marks += 1
+            End If
+        Next
+        cmd1 = New SqlCommand
+        cmd1.CommandText = "Insert into result values('" & Session("userid") & "','" & Session("subject") & "'," & marks & ")"
+        cmd1.Connection = conn
+        cmd1.ExecuteNonQuery()
+    End Sub
+
+
+
+    
+    Protected Sub RadioButton1_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RadioButton1.CheckedChanged
+        If RadioButton1.Checked Then
+            x = RadioButton1.Text
+        ElseIf RadioButton2.Checked Then
+            x = RadioButton2.Text
+        ElseIf RadioButton3.Checked Then
+            x = RadioButton3.Text
+        ElseIf RadioButton4.Checked Then
+            x = RadioButton4.Text
+        End If
+        cmd = New SqlCommand
+        cmd.Connection = conn
+
+        str1 = "update temp set answer='" & x & "' where question=" & RadioButtonList1.SelectedIndex + 1
+        cmd.CommandText = str1
+        cmd.ExecuteNonQuery()
+        Response.Write("hello")
+    End Sub
+
+    Protected Sub RadioButton2_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RadioButton2.CheckedChanged
+        If RadioButton1.Checked Then
+            x = RadioButton1.Text
+        ElseIf RadioButton2.Checked Then
+            x = RadioButton2.Text
+        ElseIf RadioButton3.Checked Then
+            x = RadioButton3.Text
+        ElseIf RadioButton4.Checked Then
+            x = RadioButton4.Text
+        End If
+        cmd = New SqlCommand
+        cmd.Connection = conn
+
+        str1 = "update temp set answer='" & x & "' where question=" & RadioButtonList1.SelectedIndex + 1
+        cmd.CommandText = str1
+        cmd.ExecuteNonQuery()
+
+    End Sub
+
+    Protected Sub RadioButton3_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RadioButton3.CheckedChanged
+        If RadioButton1.Checked Then
+            x = RadioButton1.Text
+        ElseIf RadioButton2.Checked Then
+            x = RadioButton2.Text
+        ElseIf RadioButton3.Checked Then
+            x = RadioButton3.Text
+        ElseIf RadioButton4.Checked Then
+            x = RadioButton4.Text
+        End If
+        cmd = New SqlCommand
+        cmd.Connection = conn
+
+        str1 = "update temp set answer='" & x & "' where question=" & RadioButtonList1.SelectedIndex + 1
+        cmd.CommandText = str1
+        cmd.ExecuteNonQuery()
+
+    End Sub
+
+    Protected Sub RadioButton4_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RadioButton4.CheckedChanged
+        If RadioButton1.Checked Then
+            x = RadioButton1.Text
+        ElseIf RadioButton2.Checked Then
+            x = RadioButton2.Text
+        ElseIf RadioButton3.Checked Then
+            x = RadioButton3.Text
+        ElseIf RadioButton4.Checked Then
+            x = RadioButton4.Text
+        End If
+        cmd = New SqlCommand
+        cmd.Connection = conn
+
+        str1 = "update temp set answer='" & x & "' where question=" & RadioButtonList1.SelectedIndex + 1
+        cmd.CommandText = str1
+        cmd.ExecuteNonQuery()
+
+    End Sub
+End Class

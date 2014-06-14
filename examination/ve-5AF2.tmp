@@ -1,0 +1,180 @@
+﻿Imports System.Data.SqlClient 
+Partial Public Class _Default
+    Inherits System.Web.UI.Page
+    Dim con As SqlConnection
+    Dim cmd, cmd1, cmd2, cmd3, cmd4 As SqlCommand
+    Dim dr As SqlDataReader
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        RadioButtonList1.SelectedIndex = 0
+        Try
+            con = New SqlConnection
+            con.ConnectionString = "data source=Tejesh-PC; initial catalog=tej;integrated security=sspi"
+            con.Open()
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+  
+
+
+    Protected Sub LoginButton_Click1(ByVal sender As Object, ByVal e As EventArgs) Handles Login1.Authenticate
+
+
+
+       
+
+
+    End Sub
+
+    Protected Sub RadioButtonList1_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles RadioButtonList1.SelectedIndexChanged
+
+    End Sub
+
+    Protected Sub UserName_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
+
+    End Sub
+
+   
+
+   
+
+    Protected Sub StepNextButton_Click1(ByVal sender As Object, ByVal e As EventArgs) Handles CreateUserWizard1.CreatingUser
+
+
+
+    End Sub
+
+    Protected Sub UserName1_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
+
+    End Sub
+
+    Protected Sub CreateUserWizard1_CreatedUser(ByVal sender As Object, ByVal e As EventArgs) Handles CreateUserWizard1.CreatedUser
+        
+    End Sub
+
+    Protected Sub Email_TextChanged(ByVal sender As Object, ByVal e As EventArgs)
+
+    End Sub
+
+    Protected Sub LoginButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Try
+            Dim str As String
+            cmd = New SqlCommand
+            cmd.Connection = con
+
+            If RadioButtonList1.SelectedValue = "Student" Then
+                str = "Select * from students where name= '" & Login1.UserName & "' and password= '" & Login1.Password & "'"
+                cmd.CommandText = str
+
+                dr = cmd.ExecuteReader()
+                If dr.Read() Then
+
+                    MsgBox("welcome  " + Login1.UserName)
+                    ' Session("userid") = Request("UserName")
+                    Response.Redirect("WebForm5.aspx")
+                    Response.Redirect("webform5.aspx")
+
+
+                Else
+                    MsgBox("wrong password or username")
+
+                End If
+
+            ElseIf RadioButtonList1.SelectedValue = "Teacher" Then
+
+                str = "Select * from teacher where Name= '" & Login1.UserName & "' and password= '" & Login1.Password & "'"
+                cmd.CommandText = str
+                dr = cmd.ExecuteReader()
+                If dr.Read() Then
+
+                    MsgBox("welcome  " + Login1.UserName)
+                    'Session("userid") = Request(" UserName")
+                    Response.Redirect("webform2.aspx")
+                Else
+                    MsgBox("wrong password or username")
+
+                End If
+
+            ElseIf RadioButtonList1.SelectedValue = "Admin" Then
+                str = "Select Name from admin where Name= '" & Login1.UserName & "' and password= '" & Login1.Password & "'"
+                cmd.CommandText = str
+                dr = cmd.ExecuteReader()
+                If dr.Read() Then
+                    Response.Redirect("WebForm1.aspx")
+                    MsgBox("welcome  " + Login1.UserName)
+                    'Session("userid") = Request(" UserName")
+
+                Else
+                    MsgBox("wrong password or username")
+
+                End If
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Protected Sub StepNextButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Try
+            Dim str As String
+            cmd = New SqlCommand
+            cmd.Connection = con
+
+            If RadioButtonList1.SelectedValue = "Student" Then
+
+                str = "Insert into students values( '" & CreateUserWizard1.UserName & "','" & CreateUserWizard1.Password & "','" & CreateUserWizard1.ConfirmPassword & " ','" & CreateUserWizard1.Email & "','" & CreateUserWizard1.Question & "','" & CreateUserWizard1.Answer & "' )"
+                cmd.CommandText = str
+                dr = cmd.ExecuteReader()
+                If dr.Read() Then
+
+                    MsgBox("welcome  " + CreateUserWizard1.UserName)
+                    'Session("userid") = Request(" UserName")
+                    Response.Redirect("webform2.aspx")
+                End If
+
+
+            ElseIf RadioButtonList1.SelectedValue = "Teacher" Then
+
+                str = "insert into teacher values( '" & CreateUserWizard1.UserName & "','" & CreateUserWizard1.Password & "','" & CreateUserWizard1.ConfirmPassword & " ','" & CreateUserWizard1.Email & "','" & CreateUserWizard1.Question & "','" & CreateUserWizard1.Answer & "' )"
+                cmd.CommandText = str
+                dr = cmd.ExecuteReader()
+                If dr.Read() Then
+
+                    MsgBox("welcome  " + CreateUserWizard1.UserName)
+                    Session("userid") = Request(" UserName")
+                    Response.Redirect("webform2.aspx")
+
+
+                End If
+
+            ElseIf RadioButtonList1.SelectedValue = "Admin" Then
+                str = "insert into admin values ( '" & CreateUserWizard1.UserName & "','" & CreateUserWizard1.Password & "','" & CreateUserWizard1.ConfirmPassword & " ','" & CreateUserWizard1.Email & "','" & CreateUserWizard1.Question & "','" & CreateUserWizard1.Answer & "' )"
+                cmd.CommandText = str
+                dr = cmd.ExecuteReader()
+                If dr.Read() Then
+
+
+                    Session("userid") = Request(" UserName")
+                    Response.Redirect("webform1.aspx")
+
+
+                End If
+
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
+
+    Protected Sub UserName_TextChanged1(ByVal sender As Object, ByVal e As EventArgs)
+
+    End Sub
+End Class

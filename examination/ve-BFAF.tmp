@@ -1,0 +1,54 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="examination._Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <p dir="rtl" 
+        style="height: 70px; width: 640px; font-family: 'Times New Roman', Times, serif; font-size: x-large; font-weight: bold; font-style: italic; font-variant: normal; text-transform: capitalize; color: #808080;">
+&nbsp; Welcome To Examination Portal</p>
+<p align="left" 
+        style="height: 32px; width: 282px; font-family: 'Times New Roman', Times, serif; font-size: medium; font-weight: bold; font-style: oblique; font-variant: inherit; text-transform: lowercase; color: #000000;">
+        <asp:RadioButton ID="RadioButton1" runat="server" Text="Student" 
+            TextAlign="Left" />
+        <asp:RadioButton ID="RadioButton2" runat="server" Text="Teacher" 
+            TextAlign="Left" />
+        <asp:RadioButton ID="RadioButton3" runat="server" Text="Admin" 
+            TextAlign="Left" />
+    </p>
+
+    <p align="left" 
+        style="height: 32px; width: 282px; font-family: 'Times New Roman', Times, serif; font-size: medium; font-weight: bold; font-style: oblique; font-variant: inherit; text-transform: lowercase; color: #000000;">
+        Please Select an Option then Login.......<asp:Login ID="Login2" runat="server" 
+            BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderPadding="4" BorderStyle="Solid" 
+            BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#333333" 
+            Height="283px" style="margin-left: 565px; margin-top: 0px" Width="271px">
+            <TextBoxStyle Font-Size="0.8em" />
+            <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" 
+                BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
+            <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
+            <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" Font-Size="0.9em" 
+                ForeColor="White" />
+        </asp:Login>
+    </p>
+    
+    <p align="left" 
+        style="height: 28px; width: 464px; margin-left: 0px; margin-top: 0px">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p align="left" 
+        style="height: 32px; width: 282px; font-family: 'Times New Roman', Times, serif; font-size: medium; font-weight: bold; font-style: oblique; font-variant: inherit; text-transform: lowercase; color: #000000;">
+        &nbsp;</p>
+    <p align="left" dir="ltr" 
+        style="height: 36px; width: 566px; margin-left: 0px; margin-top: 0px">
+&nbsp; This is a Examination System To Perform a test, after the test Teacher will check 
+        correct answers 
+        .............................................................................................................................&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    </form>
+</body>
+</html>

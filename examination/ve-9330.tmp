@@ -1,0 +1,20 @@
+﻿Public Partial Class WebForm5
+    Inherits System.Web.UI.Page
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Session("userid") = "" Then
+            Response.Redirect("default.aspx")
+        End If
+    End Sub
+
+
+
+    Protected Sub Button3_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button3.Click
+        Session.Abandon()
+        Response.Redirect("default.aspx")
+    End Sub
+
+    Protected Sub Button2_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button2.Click
+        Response.Redirect("webform5.aspx")
+    End Sub
+End Class

@@ -1,0 +1,12 @@
+﻿Partial Public Class _Default
+    Inherits System.Web.UI.Page
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+
+    End Sub
+
+
+    Protected Sub LoginButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+        MsgBox(Login1.UserName)
+    End Sub
+End Class

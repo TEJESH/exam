@@ -1,0 +1,105 @@
+﻿Imports System.Data.SqlClient
+Partial Public Class admin1
+    Inherits System.Web.UI.Page
+    Dim conn As SqlConnection
+    Dim cmd, cmd2, cmd1 As SqlCommand
+    Dim dr As SqlDataReader
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Try
+            conn = New SqlConnection
+
+            conn.ConnectionString = "data source=tejesh-pc; initial catalog=tej;integrated security=sspi"
+            conn.Open()
+            cmd = New SqlCommand
+            cmd.Connection = conn
+
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Protected Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
+        If RadioButtonList1.SelectedIndex = 0 Then
+            Try
+                Dim str As String
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+
+                str = "Select * from students where name= '" & TextBox4.Text & "' and password= '" & TextBox2.Text & "'"
+                cmd1.CommandText = str
+                dr = cmd1.ExecuteReader()
+                If dr.Read() Then
+                    Dim s2 As String
+                    cmd2 = New SqlCommand
+
+                    cmd2.Connection = conn
+
+                    s2 = "Update students set password='" & TextBox3.Text & "'"
+                    Label1.Text = s2
+                    cmd2.CommandText = s2
+
+                    cmd2.ExecuteNonQuery()
+
+                    Label1.Text = "password updated successfully"
+
+                Else
+                    Label1.Text = "wrong password or username"
+
+                End If
+            Catch ex As Exception
+                Label1.Text = ex.Message
+
+            End Try
+
+
+        ElseIf RadioButtonList1.SelectedIndex = 1 Then
+
+
+        ElseIf RadioButtonList1.SelectedIndex = 2 Then
+            Dim str As String
+            str = "Delete from students where name= '" & TextBox4.Text & "' and password= '" & TextBox2.Text & "'"
+
+
+            cmd.CommandText = str
+
+            Try
+                cmd.ExecuteNonQuery()
+                Label1.Text = "deleted successfully"
+            Catch ex As Exception
+            End Try
+
+        ElseIf RadioButtonList1.SelectedIndex = 3 Then
+            Dim str As String
+            str = "Delete from teacher where name= '" & TextBox4.Text & "'"
+
+
+            cmd.CommandText = str
+
+            Try
+                cmd.ExecuteNonQuery()
+                Label1.Text = "deleted successfully"
+                cmd1 = New SqlCommand
+                cmd1.Connection = conn
+                Dim str1 As String
+                str1 = "Drop table '" & TextBox4.Text & "'"
+                cmd1.CommandText = str1
+                cmd1.ExecuteNonQuery()
+                Label1.Text = "table deleted successfully"
+                conn.Close()
+            Catch ex As Exception
+                Label1.Text = ex.Message
+
+            End Try
+        Else
+            Label1.Text = "Please select a value"
+        End If
+    End Sub
+
+    Protected Sub TextBox4_TextChanged(ByVal sender As Object, ByVal e As EventArgs) Handles TextBox4.TextChanged
+
+    End Sub
+End Class

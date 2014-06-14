@@ -1,0 +1,56 @@
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="examination._Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title></title>
+    <style type="text/css">
+ #root {
+    background-color: #eee;
+}
+
+#left_side {
+    float: left;
+        height: 19px;
+        width: 80px;
+    }
+
+#center_s {
+    margin-left: auto;
+    margin-right: auto;
+    width: 65px;
+    background-color: #ccc;
+}
+
+#right_side {
+    float: right;
+}
+
+
+</style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <p dir="rtl" 
+        
+        style="height: 70px; width: 814px; font-family: 'Times New Roman', Times, serif; font-size: x-large; font-weight: bold; font-style: italic; font-variant: normal; text-transform: capitalize; color: #808080;">
+&nbsp;&nbsp; Welcome To Student Portal. Here You Can choose your Subject:</p>
+<div id="root">
+    <div id="left_side">
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server" Font-Bold="True" 
+            Font-Italic="True" Font-Names="Times New Roman" Font-Overline="False" 
+            Font-Size="Large" Font-Strikeout="False" Font-Underline="True" 
+            ForeColor="Black" RepeatDirection="Horizontal" TextAlign="Left" Width="383px">
+            <asp:ListItem>Aptitude</asp:ListItem>
+            <asp:ListItem>GK</asp:ListItem>
+            <asp:ListItem>C</asp:ListItem>
+            <asp:ListItem>Maths</asp:ListItem>
+            <asp:ListItem>English</asp:ListItem>
+        </asp:RadioButtonList>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    </div>
+    </form>
+</body>
+</html>

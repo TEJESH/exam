@@ -1,0 +1,45 @@
+﻿Imports System.Data.SqlClient 
+Partial Public Class _Default
+    Inherits System.Web.UI.Page
+    Dim con As SqlConnection
+    Dim cmd, cmd1, cmd2, cmd3, cmd4 As SqlCommand
+    Dim dr As SqlDataReader
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+       Try
+            con = New SqlConnection
+            con.ConnectionString = "data source=Tejesh-PC; initial catalog=tej;integrated security=sspi"
+            con.Open()
+
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+
+    Protected Sub LoginButton_Click(ByVal sender As Object, ByVal e As EventArgs)
+    Try
+            Dim str As String
+            cmd = New SqlCommand
+            cmd.Connection = con
+
+            str = "Select * from admin where Name= '" & Login1.UserName  & "' and pass= '" & Login1.Password & "'"
+            cmd.CommandText = str
+            dr = cmd.ExecuteReader()
+            If dr.Read() Then
+
+                MsgBox("welcome  " + Login1.UserName)
+                
+            Else
+                MsgBox("wrong password or username")
+
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        dr.Close()
+
+    End Sub
+End Class

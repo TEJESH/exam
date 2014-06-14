@@ -1,0 +1,23 @@
+﻿Imports System.Data.SqlClient
+Partial Public Class WebForm4
+    Inherits System.Web.UI.Page
+    Dim con As SqlConnection
+    Dim da As SqlDataAdapter
+    Dim dst As New DataSet
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        'If RadioButtonList3.SelectedValue = "q1" Then
+
+        con = New SqlConnection
+        con.ConnectionString = "data source = PROGLAB1; initial catalog = sis; user id = clerk; pwd = clerk;"
+        con.Open()
+        da = New SqlDataAdapter("select * from question1", con)
+        da.Fill(dst, "question1")
+        da.SelectCommand = New SqlCommand("select * from question2", con)
+        da.Fill(dst, "question2")
+        con.Close()
+
+        End If
+    End Sub
+
+End Class
